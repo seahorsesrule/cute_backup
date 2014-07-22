@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+
+<html>
+<head>
+    <title>Cute or Really Cute?</title>
+    {% load staticfiles %}
+    <link href="{% static 'cats/slider/css/overcast/jquery-ui-1.10.4.custom.css' %}" rel="stylesheet">
+    <script src="{% static 'cats/slider/js/jquery-1.10.2.js' %}"></script>
+    <script src="{% static 'cats/slider/js/jquery-ui-1.10.4.custom.js' %}"></script>
+    
+    
+</head>
+
+<body>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cats/cutecats.css' %}" />
+    <h1><a href="{% url "index" %}" class="cute">Cute<span> or <span>Really Cute</span></span></a></h1>
+    
+    {% block content %}
+    <div class="center"></div>
+    {% endblock %}
+</body>
+</html>

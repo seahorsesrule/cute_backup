@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container">   
+    
+    <br>
+    <br>
+    
+    <div id="search">
+        <h2> Search for a cat you have submitted: </h2>
+                        
+            <form method="get" action=""> 
+                <p>Cat Name: <input type="text" name="namesearch" />
+                <input id="namesearch" type="submit" value="search" /></p>
+            </form>
+            
+            <form method="get" action="">
+                <p>Cat ID: <input type="text" name="idsearch" />
+                <input type="submit" value="search" /></p>
+            </form> 
+    </div>
+    
+    <div id="results">
+        <script>
+                $.get("{% url 'search' %}", function( data ) {
+                        $("results").append(data.photo);
+                }, "json" );
+        </script>
+        
+    </div>
+    
+    </div>
+    
+{% endblock %}
+
+
+<!-- {{ form.errors }}
+        <form action="{% url "search" %}" method="post" enctype="text/plain">{% csrf_token %}
+            <p>
+                {{ form.namesearch.errors }}
+                <label for="id_namesearch">Cat name:</label>
+                {{ form.namesearch }}
+                <input type="submit" value="Search" />
+            </p>
+            <p>
+                {{ form.idsearch.errors}}
+                <label for="id_idsearch">Cat ID:</label>
+                {{ form.idsearch }}
+                <input type="submit" value="Search" />
+            </p>
+        </form> -->

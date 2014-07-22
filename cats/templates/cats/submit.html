@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="container">
+        <div id="submit">
+        <br>
+        <br>
+        {{ form.errors }}
+        <form action="{% url "submit" %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+            <p>
+                {{ form.catname.errors }}
+                <label for="id_catname">Name of Your Cat:</label>
+                {{ form.catname }}
+            </p>
+            <p>
+                <label for="id_photo">Photo:</label>
+                {{ form.photo }}
+            </p>
+            <p>
+                <label for="id_story">Cute story:</label>
+                {{ form.story }}
+                <br>
+                <br>
+                <input type="submit" value="Submit" />
+            </p>
+        </form>
+        </div>
+    </div>
+    
+{% endblock %}
+
