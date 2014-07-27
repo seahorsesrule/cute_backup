@@ -1,51 +1,59 @@
 {% extends "base.html" %}
+{% block head %}
+    
+<script>
+    var template = {};
+    $(document).ready(function() {
+        template['searchUrl'] = '{% url "search" %}';
+        $("#ns_form").submit(function(event) {
+            $.ajax(template['searchUrl'], {
+                data: {'namesearch': $('#ns_text').val()},
+                type: 'GET',
+                success: function(data) {
+                    $.each(data, function(idx, el) {
+                        $('#results').append('<a href="' + el.url + '">' + '<img style="max-height:300px; width:auto" src='
+                                             + el.photo_url + '>' + '</a>');
+                    });
+                    },
+                });
+            event.preventDefault();
+         });
+    });
+</script>    
+{% endblock head %}
+
+
 {% block content %}
 
-    <div class="container">   
-    
+
+<div class="container">   
+	
     <br>
     <br>
-    
+	
     <div id="search">
         <h2> Search for a cat you have submitted: </h2>
-                        
-            <form method="get" action=""> 
-                <p>Cat Name: <input type="text" name="namesearch" />
-                <input id="namesearch" type="submit" value="search" /></p>
-            </form>
-            
-            <form method="get" action="">
-                <p>Cat ID: <input type="text" name="idsearch" />
-                <input type="submit" value="search" /></p>
-            </form> 
-    </div>
-    
-    <div id="results">
-        <script>
-                $.get("{% url 'search' %}", function( data ) {
-                        $("results").append(data.photo);
-                }, "json" );
-        </script>
+	
+        <form id="ns_form" method="get" action=""> 
+            <p>Cat Name: <input type="text" id="ns_text" />
+            <input id="namesearch" type="submit" value="search" /></p>
+        </form>
+		
+        <form method="get" action="">
+            <p>Cat ID: <input type="text" name="idsearch" />
+            <input type="submit" value="search" /></p>
+        </form> 
         
     </div>
     
+    <br>
+    <br>
+	
+    <div id="results">
+        
+        
     </div>
-    
+	
+</div>
+	
 {% endblock %}
-
-
-<!-- {{ form.errors }}
-        <form action="{% url "search" %}" method="post" enctype="text/plain">{% csrf_token %}
-            <p>
-                {{ form.namesearch.errors }}
-                <label for="id_namesearch">Cat name:</label>
-                {{ form.namesearch }}
-                <input type="submit" value="Search" />
-            </p>
-            <p>
-                {{ form.idsearch.errors}}
-                <label for="id_idsearch">Cat ID:</label>
-                {{ form.idsearch }}
-                <input type="submit" value="Search" />
-            </p>
-        </form> -->

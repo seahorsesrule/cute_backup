@@ -1,11 +1,12 @@
+import json
+
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
-from django.template import RequestContext
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseRedirect
 
 from cats.models import Cat, CatData, Vote
-from cats.forms import CatDataForm, VoteForm, SearchForm
-import json
+from cats.forms import CatDataForm, VoteForm
+
 
 def index(request):
     random_catdata = CatData.objects.order_by("?")[0]
@@ -22,7 +23,6 @@ def submit(request):
                                                 args=(cat.name, cat.id, cat_data.id)))
     else:
         form = CatDataForm()
-            
     return render(request,
                   'cats/submit.html',
                   {'form' : form}
@@ -59,23 +59,26 @@ def vote(request, cat_data_id):
             return HttpResponse(json.dumps(response_data), content_type="application/json")
 
 def search(request):
-    if 'idsearch' in request.GET and request.GET['idsearch']:
+    if 'idsearch' in request.GET:
         idsearch = request.GET['idsearch']
         cat = Cat.objects.get(id=idsearch)
         return HttpResponseRedirect(reverse('display_cat',
                                             args=(cat.name, cat.id)))
-    elif 'namesearch' in request.GET and request.GET['namesearch']:
+    elif 'namesearch' in request.GET:
         namesearch = request.GET['namesearch']
-        cats = [Cat.objects.filter(name__iexact=namesearch)]
+        cats = Cat.objects.filter(name__iexact=namesearch)
+        response_data = []
         for cat in cats:
-            catdata = CatData.objects.filter(cat__name=cat).order_by('-created')[0]
-            response_data = []
-            response_data.append(catdata)
-            return response_data     
+            catdata = CatData.objects.filter(cat=cat).latest('created')
+            response_data.append({
+                'photo_url': catdata.photo.url,
+                'url': reverse('display_cat', args=(cat.name, cat.id)),
+                'id': cat.id,
+                'name': cat.name
+            })
         return HttpResponse(json.dumps(response_data), content_type="application/json")
         
     return render(request,
                   'cats/search.html',
-                  #{'form' : form}
                   )
 

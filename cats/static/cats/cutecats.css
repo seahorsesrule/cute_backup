@@ -133,11 +133,71 @@ button {
 img {
     display: block;
     margin: 0 auto;
-    padding: 5px;
     border-style: solid;
+}
+
+.border1 {
+    padding: 5px;
     border-width: 70px;
-    -moz-border-image: url("/static/cats/Gold-Yellow049.png") 110 116 stretch;
-    -webkit-border-image: url("/static/cats/Gold-Yellow049.png") 110 116 stretch;
-    -o-border-image: url("/static/cats/Gold-Yellow049.png" 110 116 stretch;
-    border-image: url("/static/cats/Gold-Yellow049.png") 110 116 stretch;
+    -moz-border-image: url(starframegold.png) 110 116 stretch;
+    -webkit-border-image: url(starframegold.png) 110 116 stretch;
+    -o-border-image: url(starframegold.png) 110 116 stretch;
+    border-image: url(starframegold.png) 110 116 stretch;
+}
+
+.border2 {
+    border-width: 70px;
+    -moz-border-image: url(pointyframeblue.png) 47 48 stretch;
+    -webkit-border-image: url(pointyframeblue.png) 47 48 stretch;
+    -o-border-image: url(pointyframeblue.png) 47 48 stretch;
+    border-image: url(pointyframeblue.png) 47 48 stretch;
+}
+
+.border3 {
+    border-width: 64px;
+    -moz-border-image: url(squareframegold.png) 64 stretch;
+    -webkit-border-image: url(squareframegold.png) 64 stretch;
+    -o-border-image: url(squareframegold.png) 64 stretch;
+    border-image: url(squareframegold.png) 64 stretch;
+}
+
+.border4 {
+    border-width: 70px;
+    -moz-border-image: url(pointyframepink.png) 47 48 stretch;
+    -webkit-border-image: url(pointyframepink.png) 47 48 stretch;
+    -o-border-image: url(pointyframepink.png) 47 48 stretch;
+    border-image: url(pointyframepink.png) 47 48 stretch;
+}
+
+.border5 {
+    border-width: 35px 38px;
+    -moz-border-image: url(thinframegold.png) 35 38 stretch;
+    -webkit-border-image: url(thinframegold.png) 35 38 stretch;
+    -o-border-image: url(thinframegold.png) 35 38 stretch;
+    border-image: url(thinframegold.png) 35 38 stretch;
+}
+
+.border6 {
+    border-width: 35px 38px;
+    -moz-border-image: url(thinframeblue.png) 35 38 stretch;
+    -webkit-border-image: url(thinframeblue.png) 35 38 stretch;
+    -o-border-image: url(thinframeblue.png) 35 38 stretch;
+    border-image: url(thinframeblue.png) 35 38 stretch;
+}
+
+.border7 {
+    padding: 5px;
+    border-width: 70px;
+    -moz-border-image: url(starframepink.png) 110 116 stretch;
+    -webkit-border-image: url(starframepink.png) 110 116 stretch;
+    -o-border-image: url(starframepink.png) 110 116 stretch;
+    border-image: url(starframepink.png) 110 116 stretch;
+}
+
+.border8 {
+    border-width: 64px;
+    -moz-border-image: url(squareframerainbow.png) 64 stretch;
+    -webkit-border-image: url(squareframerainbow.png) 64 stretch;
+    -o-border-image: url(squareframerainbow.png) 64 stretch;
+    border-image: url(squareframerainbow.png) 64 stretch;
 }

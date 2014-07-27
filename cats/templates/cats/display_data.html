@@ -1,8 +1,11 @@
 
 {% extends "base.html" %}
+
     {% block content %}
+
         <p>Cat: <a href="{% url "display_cat" cat.name cat.id %}">{{ cat.name }}</a></p>
         <img src="{{ cat_data.photo.url }}" style="max-height:500px; width:auto">
         <p>Story: {{ cat_data.story }}<br clear="all"></p>
-      {% endblock %}
+    
+    {% endblock %}
 

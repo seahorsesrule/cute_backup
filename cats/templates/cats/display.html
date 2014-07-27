@@ -7,16 +7,29 @@
     
     <p>{% for cat_data in cat.data.all %}
         <table>
-        <tr>
-            <td>
-                <a href="{% url 'display_cat_data' cat.name cat.id cat_data.id %}">
-                    <img src="{{ cat_data.photo.url }}" style="max-height:300px; width:auto">
-                </a>
-            </td>
-            <td>
-                Average Cuteness: {{ cat_data.vote.avg_cuteness }}
-            </td>
-        </tr>
+            {% if forloop.counter|divisibleby:"2" %}
+                <tr>
+                    <td>
+                        <a href="{% url 'display_cat_data' cat.name cat.id cat_data.id %}">
+                        <img src="{{ cat_data.photo.url }}" style="max-height:300px; width:auto">
+                        </a>
+                    </td>
+                    <td>
+                        Average Cuteness: {{ cat_data.vote.avg_cuteness }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>
+                        Average Cuteness: {{ cat_data.vote.avg_cuteness }}
+                    </td>
+                    <td>
+                        <a href="{% url 'display_cat_data' cat.name cat.id cat_data.id %}">
+                        <img src="{{ cat_data.photo.url }}" style="max-height:300px; width:auto">
+                        </a>
+                    </td>
+                </tr>
+            {% endif %}
         </table>
     {% endfor %} </p>
     
