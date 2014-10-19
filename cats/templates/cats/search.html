@@ -9,12 +9,15 @@
             $.ajax(template['searchUrl'], {
                 data: {'namesearch': $('#ns_text').val()},
                 type: 'GET',
+                error: function() {
+                    $('#results').append("There are no cats by that name.");
+                },
                 success: function(data) {
                     $.each(data, function(idx, el) {
                         $('#results').append('<a href="' + el.url + '">' + '<img style="max-height:300px; width:auto" src='
                                              + el.photo_url + '>' + '</a>');
                     });
-                    },
+                    }
                 });
             event.preventDefault();
          });

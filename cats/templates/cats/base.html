@@ -5,6 +5,10 @@
     <title>Cute or Really Cute?</title>
     {% load staticfiles %}
     <link href="{% static 'cats/slider/css/overcast/jquery-ui-1.10.4.custom.css' %}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Alike' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Gudea' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Asap' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope' rel='stylesheet' type='text/css'>
     <script src="{% static 'cats/slider/js/jquery-1.10.2.js' %}"></script>
     <script src="{% static 'cats/slider/js/jquery-ui-1.10.4.custom.js' %}"></script>
     
@@ -50,7 +54,7 @@
 <body>
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'cats/cutecats.css' %}" />
-    <h1><a href="{% url "index" %}" class="cute">Cute<span> or <span>Really Cute</span></span></a></h1>
+    <h1><a href="{% url "index" %}" class="cute">Cute <span>or<span> Really Cute</span></span></a></h1>
     
     {% block content %}
     <div class="center"></div>

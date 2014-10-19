@@ -13,7 +13,7 @@
         
         
         <div id="sliderbox">
-            <p style="text-align:left; padding-left:150px">How cute is {{ random_catdata.cat }}? <div id="average"></div></p>
+            <p style="text-align:left; padding-left:150px">How cute is {{ random_catdata.cat }}?
         
         <br>
         
@@ -21,14 +21,14 @@
             <button id="vote" form="VoteForm" type="submit">Vote</button>
             <br>
             <br>
-        </div>
+
         
         <style type="text/css">
             .ui-slider-horizontal .ui-state-default {
               background: white url(/static/cats/4567.gif) no-repeat scroll 50% 50%;
               z-index: -1;
             }
-              
+
             .ui-slider-tick-mark{
                 display:inline-block;
                 width:4px;
@@ -39,17 +39,17 @@
                 margin-left: -1px;
                 z-index: -1;
             }
-            
+
             #slider {
                 margin-left: auto;
                 margin-right: auto;
-                width: 399px;
+                width: 400px;
             }
-            
+
             .ui-corner-all {
               border-radius:3px;
             }
-            
+
             .ui-slider-number {
                 color: black;
                 display:inline-block;
@@ -57,12 +57,12 @@
                 position:absolute;
                 top: 20px;
             }
-            
+
             .ui-slider-horizontal .ui-slider-handle{
               top: -.9em;
               margin-left: -.9em;
             }
-            
+
             .ui-slider .ui-slider-handle {
               position: absolute;
               z-index: 2;
@@ -70,24 +70,24 @@
               height: 32px;
               cursor: default;
             }
-            
+
             .ui-widget-content {
               border: 2px dotted #aaaaaa;
               height: 10px;
             }
-            
+
             .ui-widget {
               font-family: "Lucida Bright", serif;
-            } 
+            }
             </style>
-            
+
           <script>
                        
             function setSliderTicks(){
                 var $slider =  $('#slider');
                 var max =  $slider.slider("option", "max");
                 var min = $slider.slider('option', 'min');
-                var spacing =  100 / (max - min);
+                var spacing =  99.6 / (max - min);
             
                 $slider.find('.ui-slider-tick-mark').remove();
                 for (var i = 0; i < max ; i++) {
@@ -133,9 +133,9 @@
                         type: 'POST',
                         success: function(data) {
                                 $('#vote').replaceWith('<button id="next">Next</button>');
+                                $('#beforeave').remove();
                                 $('#average').append("Average Cuteness: " + data.average);
-                        },
-                    
+                        }
                     });
                 });
                 $("#sliderbox").on('click', '#next', function() {
@@ -144,12 +144,15 @@
             });
           </script>
         </div>
-        
+
+        <br>
+        <br>
+
         <div id="average"></div>
-        
-        <br>
-        <br>
-        <br>
+
+            <div id="beforeave" style="font-family:'Alike', serif; font-size:x-large">
+                <br>
+            </div>
         <br>
         <br>
         <br>

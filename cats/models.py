@@ -22,6 +22,5 @@ class Vote(models.Model):
     
     @property
     def avg_cuteness(self):
-        return int(self.cuteness_sum / self.num_votes)
-
-
+        ave = self.cuteness_sum / float(self.num_votes)
+        return "%.2f" % ave

@@ -1,32 +1,37 @@
 
     {% extends "base.html" %}
     {% block content %}
-    
+
+    <br>
     <p>Cat: {{ cat.name }}
     <br>Cat ID: {{ cat.id }}</p>
     
     <p>{% for cat_data in cat.data.all %}
-        <table>
+        <table id="catdisplay">
             {% if forloop.counter|divisibleby:"2" %}
                 <tr>
-                    <td>
+                    <td class="catpiccuteness" id="rotater">
+                        Average <br>
+                        Cuteness: <br>
+                        {{ cat_data.vote.avg_cuteness }}
+                    </td>
+                    <td class="catpicr">
                         <a href="{% url 'display_cat_data' cat.name cat.id cat_data.id %}">
                         <img src="{{ cat_data.photo.url }}" style="max-height:300px; width:auto">
                         </a>
-                    </td>
-                    <td>
-                        Average Cuteness: {{ cat_data.vote.avg_cuteness }}
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td>
-                        Average Cuteness: {{ cat_data.vote.avg_cuteness }}
-                    </td>
-                    <td>
+                    <td class="catpicl">
                         <a href="{% url 'display_cat_data' cat.name cat.id cat_data.id %}">
                         <img src="{{ cat_data.photo.url }}" style="max-height:300px; width:auto">
                         </a>
+                    </td>
+                    <td class="catpiccuteness" id="rotatel">
+                        Average <br>
+                        Cuteness: <br>
+                        {{ cat_data.vote.avg_cuteness }}
                     </td>
                 </tr>
             {% endif %}

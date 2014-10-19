@@ -18,7 +18,7 @@ h1 {
 }
 
 h2 {
-    font-family: "Cambria", "Palatino", sans-serif;
+    font-family: 'Asap', sans-serif;
     font-size: 14pt;
     text-align: center;
     color: #7C7C8E; 
@@ -27,25 +27,29 @@ h2 {
 a.cute {
     text-decoration: none;
     color:#3366CC;
-    font-family: "Georgia", serif;
-    font-weight: 700;
+    font-family: "Alike", serif;
+    font-weight: bolder;
+    font-size:46pt;
+    vertical-align: bottom;
 }
 
 a.cute span {
     color: #7C7C8E;
-    font-size: 30pt;
-    font-weight: 500;
-    font-family: "Verdana", sans-serif;
+    font-size: 40pt;
+    font-weight: 800;
     font-style: italic;
+    font-family: "Annie Use Your Telescope", serif;
     padding: 5px;
+    vertical-align:10px;
 }
 
 a.cute span span {
     color: #990000;
-    font-family: "Georgia", serif;
-    font-size: 40pt;
-    font-weight: 700;
+    font-family: "Alike", serif;
+    font-size: 46pt;
+    font-weight: bolder;
     font-style: normal;
+    vertical-align: bottom;
 }
 
 a.cute:visited {
@@ -68,20 +72,20 @@ a.cute:visited span span {
 }
 
 p {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    font-size: medium;
+    font-family: 'Gudea', sans-serif;
+    font-size: large;
     color:#4D4949;
     text-align: center;
 }
 
 button {
-    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-family: "Asap", sans-serif;
     border: 2px #aaaaaa solid;
     float:right;
     border-radius: 50px;
     margin-right: 160px;
     margin-top: -20px;
-    font-size: medium;
+    font-size: large;
     color: black;
     background: #F0E7D8;
 }
@@ -91,16 +95,16 @@ button {
     font-size: x-large;
     text-align: center;
     display: block;
-    font-family: Georgia, Baskerville, "Baskerville Old Face", serif;
+    font-family: "Alike", serif;
     font-style: italic;
     color: #990000;
 }
 
 .ssbuttons {
-    font-size:16pt;
+    font-size:x-large;
     color:#7A1111;
     background:#D8E1F0;
-    width:200px;
+    width:210px;
     margin: 0 50 0 50;
     border-radius: 0 !important;
     -moz-border-radius: 0 !important;
@@ -113,7 +117,6 @@ button {
 #submitkitty {
     float: right;
 }
-
 
 #vote {
     float: right;
@@ -128,6 +131,42 @@ button {
 
 #next {
     color:#990000;
+}
+
+#catdisplay {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 30%;
+}
+
+.catpicl {
+    padding-right: 25px;
+}
+
+.catpicr {
+    padding-left: 25px;
+}
+
+.catpiccuteness {
+    font-family: Georgia, Baskerville, "Baskerville Old Face", serif;
+    font-size: x-large;
+    color: #990000;
+    font-style: italic;
+}
+
+#rotatel {
+    -webkit-transform: rotate(25deg);
+    -moz-transform: rotate(25deg);
+    -ms-transform: rotate(25deg);
+    -o-transform: rotate(25deg);
+}
+
+#rotater {
+    -webkit-transform: rotate(-25deg);
+    -moz-transform: rotate(-25deg);
+    -ms-transform: rotate(-25deg);
+    -o-transform: rotate(-25deg);
 }
 
 img {
