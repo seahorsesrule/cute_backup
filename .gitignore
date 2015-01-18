@@ -1,3 +1,10 @@
 media/
 *.pyc
 .com.apple*
+.idea
+cutevenv
+cats_dump.sql
+db.sql
+db.sqlite4
+inserts.sql
+requirements.txt
