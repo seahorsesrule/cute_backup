@@ -7,13 +7,14 @@ from django.http import HttpResponse, HttpResponseRedirect
 from cats.models import Cat, CatData, Vote
 from cats.forms import CatDataForm, VoteForm
 
-
+# Displays a random cat for the user to vote on
 def index(request):
     random_catdata = CatData.objects.order_by("?")[0]
     return render(request,
                 'cats/index.html',
                 {'random_catdata': random_catdata})
 
+# Adds data submitted by user to database
 def submit(request):
     if request.method == 'POST':
         form = CatDataForm(request.POST, request.FILES)
@@ -28,12 +29,14 @@ def submit(request):
                   {'form' : form}
     )
 
+# Loads all submissions for a single cat
 def display_cat(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
     return render(request,
                   'cats/display.html',
                   {'cat': cat})
 
+# Shows a single photo submission
 def display_cat_data(request, cat_id, cat_data_id):
     cat = Cat.objects.get(id=cat_id)
     cat_data = CatData.objects.get(cat=cat, id=cat_data_id)
@@ -44,6 +47,7 @@ def display_cat_data(request, cat_id, cat_data_id):
                     'cat_data': cat_data
                   })
 
+# Submits user vote and calculations based on it to database; AJAX loads the average cuteness
 def vote(request, cat_data_id):
     catdata = CatData.objects.get(id=cat_data_id)
     if request.method == 'POST':
@@ -58,12 +62,15 @@ def vote(request, cat_data_id):
             response_data = {'average': cat_vote.avg_cuteness}
             return HttpResponse(json.dumps(response_data), content_type="application/json")
 
+# Allows user to search for cat by its name or ID
 def search(request):
+    # ID search will redirect to Display Cat page for that cat
     if 'idsearch' in request.GET:
         idsearch = request.GET['idsearch']
         cat = Cat.objects.get(id=idsearch)
         return HttpResponseRedirect(reverse('display_cat',
                                             args=(cat.name, cat.id)))
+    # Name search will AJAX load most recent photo for each cat with that name
     elif 'namesearch' in request.GET:
         namesearch = request.GET['namesearch']
         cats = Cat.objects.filter(name__iexact=namesearch)

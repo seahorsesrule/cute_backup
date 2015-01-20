@@ -1,7 +1,10 @@
+<!-- Search page that allows user to find a cat by its name or ID -->
+
 {% extends "base.html" %}
 {% block head %}
     
 <script>
+    // If user searches by name, page will load most recent photo of each cat by that name
     var template = {};
     $(document).ready(function() {
         template['searchUrl'] = '{% url "search" %}';

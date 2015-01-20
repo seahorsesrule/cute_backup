@@ -1,4 +1,6 @@
 
+<!-- Corresponds to "Display Cat" url. Displays all photos with ratings for one cat -->
+
     {% extends "base.html" %}
     {% block content %}
 
@@ -8,6 +10,7 @@
     
     <p>{% for cat_data in cat.data.all %}
         <table id="catdisplay">
+        <!-- Alternates display so cat photo is to the right or left of cuteness rating -->
             {% if forloop.counter|divisibleby:"2" %}
                 <tr>
                     <td class="catpiccuteness" id="rotater">

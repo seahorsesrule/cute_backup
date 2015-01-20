@@ -15,11 +15,10 @@
    <script>
         
         // Adds a random border to each image, without repeating borders until it uses them all.
-        
+
         var borders = [];
         var numBorders = 8;
         function makeUniqueRandom() {
-            // refill the array if needed
             if (!borders.length) {
                 for (var i=0; i < numBorders; i++) {
                     borders.push(i);
@@ -28,7 +27,6 @@
             var index = Math.floor(Math.random() * borders.length);
             var val = borders[index];
             
-            // now remove that value from the array
             borders.splice(index, 1);
             
             return val;

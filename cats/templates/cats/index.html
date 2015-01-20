@@ -1,3 +1,5 @@
+<!-- Main page. Displays random cat photo with a slider that allows users to vote. -->
+
 {% extends "base.html" %}
 {% block content %}
     <br>
@@ -10,8 +12,7 @@
         <br>
         <br>
         <br>
-        
-        
+
         <div id="sliderbox">
             <p style="text-align:left; padding-left:150px">How cute is {{ random_catdata.cat }}?
         
@@ -22,7 +23,8 @@
             <br>
             <br>
 
-        
+
+        <!-- Custom CSS for the voting slider -->
         <style type="text/css">
             .ui-slider-horizontal .ui-state-default {
               background: white url(/static/cats/4567.gif) no-repeat scroll 50% 50%;
@@ -82,7 +84,7 @@
             </style>
 
           <script>
-                       
+            // This creates a slider that allows the user to vote from 1-10
             function setSliderTicks(){
                 var $slider =  $('#slider');
                 var max =  $slider.slider("option", "max");
@@ -100,6 +102,8 @@
                                      sliderNumber.css('left').replace('px', '') - (sliderNumber.width()/2));
                  }
             }
+
+            // This changes the slider cat image depending on how the user votes
             var sliderImages = ['/static/cats/123.gif',
                                 '/static/cats/4567.gif',
                                 '/static/cats/8910.gif'];
@@ -126,7 +130,8 @@
                     }
                 });
                 setSliderTicks();
-                
+
+                // Submits user vote and displays average cuteness of cat
                 $("#vote").click(function() {
                     $.ajax("{% url 'vote_catdata' random_catdata.id %}", {
                         data: {vote: $('#slider').slider('value')},
